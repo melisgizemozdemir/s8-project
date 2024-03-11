@@ -1,14 +1,21 @@
 
-import { Route, Switch, Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { Route, Switch, Link} from 'react-router-dom'
 import './App.css'
 import Welcome from './components/ pages/Welcome'
 import Signup from './components/ pages/Signup'
 import Browse from './components/ pages/Browse'
+import { useState } from 'react'
+
 
 function App() {
  
+const[users, setUsers] = useState([
+  {name: 'Melis', avatar: 'https://picsum.photos/300?1'},
+  {name: 'Meral', avatar: 'https://picsum.photos/300?2'}
 
-  return (
+]);
+
+return(
     <>
 
     <header>
@@ -24,21 +31,23 @@ function App() {
     <Switch>
 
       <Route exact path="/">
-        <Signup/></Route>
+        <h1>main</h1>
+      </Route>
 
       <Route path="/signup">
         <Signup/></Route>
 
       <Route path="/welcome">
-      <Welcome/></Route>
+      <Welcome users={users}/>
+      </Route>
 
       <Route path="/browse">
       <Browse/></Route>
 
     </Switch>
     
-    </>
-  )
+  </>)
+  
 }
 
 export default App
